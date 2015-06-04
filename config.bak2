@@ -1,0 +1,128 @@
+[global_config]
+  handle_size = 2
+  custom_url_handler = chrome
+  enabled_plugins = CustomCommandsMenu, InactivityWatch, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger, MavenPluginURLHandler, LaunchpadBugURLHandler
+  focus = mouse
+  title_transmit_fg_color = "#000000"
+  use_custom_url_handler = True
+  title_inactive_fg_color = "#ffffff"
+  suppress_multiple_term_dialog = True
+  borderless = True
+  title_transmit_bg_color = "#90ee90"
+  inactive_color_offset = 1.0
+  title_inactive_bg_color = "#5a5a5a"
+[keybindings]
+  broadcast_group = <Primary><Shift>g
+  full_screen = None
+  go_prev = None
+  broadcast_all = <Primary><Shift>a
+  reset_clear = None
+  broadcast_off = <Primary><Shift>n
+  go_next = None
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    palette = "#000000:#ff0000:#55ab00:#ffe300:#1e90ff:#ad7fa8:#34e2e2:#eeeeec:#000000:#ff0000:#8ae234:#ffe300:#1e90ff:#ad7fa8:#34e2e2:#eeeeec"
+    visible_bell = True
+    background_image = None
+    urgent_bell = True
+    use_system_font = False
+    cursor_color = "#00ff10"
+    foreground_color = "#bebebe"
+    scroll_on_output = False
+    font = Monospace 8
+    background_color = "#001125"
+    scrollback_lines = 10000
+    scrollback_infinite = True
+  [[htop]]
+    use_custom_command = True
+    use_system_font = False
+    font = Monospace 9
+    background_image = None
+    custom_command = htop
+[layouts]
+  [[default]]
+    [[[child0]]]
+      position = 959:27
+      type = Window
+      order = 0
+      parent = ""
+      size = 961, 1173
+    [[[child1]]]
+      position = 586
+      type = VPaned
+      order = 0
+      parent = child0
+    [[[terminal3]]]
+      profile = default
+      type = Terminal
+      order = 1
+      parent = child1
+    [[[terminal2]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child1
+  [[python dev]]
+    [[[child0]]]
+      position = 960:29
+      type = Window
+      order = 0
+      parent = ""
+      size = 960, 1171
+    [[[child1]]]
+      position = 286
+      type = VPaned
+      order = 0
+      parent = child0
+    [[[child2]]]
+      position = 480
+      type = HPaned
+      order = 0
+      parent = child1
+    [[[terminal3]]]
+      profile = default
+      command = sudo -u keymaster /bin/vim /home/keymaster/keymaster.cfg
+      type = Terminal
+      order = 0
+      parent = child2
+    [[[terminal5]]]
+      profile = default
+      command = sudo -u keymaster /bin/vim /home/keymaster/keymaster.py
+      type = Terminal
+      order = 1
+      parent = child1
+    [[[terminal4]]]
+      profile = default
+      command = /bin/watch --diff -c -n 2 sudo -u keymaster /home/keymaster/keymaster.py
+      type = Terminal
+      order = 1
+      parent = child2
+  [[New Layout]]
+    [[[child0]]]
+      position = 959:27
+      type = Window
+      order = 0
+      parent = ""
+      size = 961, 1173
+    [[[child1]]]
+      position = 586
+      type = VPaned
+      order = 0
+      parent = child0
+    [[[terminal3]]]
+      profile = default
+      type = Terminal
+      order = 1
+      parent = child1
+    [[[terminal2]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child1
+[plugins]
+  [[CustomCommandsMenu]]
+    [[[alias pat]]]
+      command = '''/bin/grep -q "alias pat" ~/.bash_profile || echo "alias pat='puppet agent -t | tee ~/pat.out'" >> ~/.bash_profile && . ~/.bash_profile'''
+      enabled = True
+      name = alias pat

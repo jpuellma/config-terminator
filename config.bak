@@ -1,0 +1,64 @@
+[global_config]
+  handle_size = 3
+  custom_url_handler = chrome
+  enabled_plugins = CustomCommandsMenu, InactivityWatch, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, Logger
+  focus = mouse
+  title_transmit_fg_color = "#00ff00"
+  use_custom_url_handler = True
+  title_inactive_fg_color = "#ffffff"
+  suppress_multiple_term_dialog = True
+  borderless = True
+  title_transmit_bg_color = "#0076c9"
+  title_receive_fg_color = "#d3d3d3"
+  inactive_color_offset = 1.0
+  title_inactive_bg_color = "#5a5a5a"
+[keybindings]
+  broadcast_group = <Primary><Shift>g
+  full_screen = None
+  go_prev = None
+  broadcast_all = <Primary><Shift>a
+  reset_clear = None
+  broadcast_off = <Primary><Shift>n
+  go_next = None
+[profiles]
+  [[default]]
+    foreground_color = "#bebebe"
+    palette = "#000000:#ff0000:#55ab00:#ffe300:#1e90ff:#ad7fa8:#34e2e2:#eeeeec:#000000:#ff0000:#8ae234:#ffe300:#1e90ff:#ad7fa8:#34e2e2:#eeeeec"
+    visible_bell = True
+    background_image = None
+    urgent_bell = True
+    cursor_shape = ibeam
+    use_system_font = False
+    cursor_color = "#00ff10"
+    cursor_blink = False
+    scroll_on_output = False
+    scrollbar_position = hidden
+    font = DejaVu Sans Mono 8
+    background_color = "#001125"
+    scrollback_lines = 10000
+    scrollback_infinite = True
+  [[htop]]
+    use_custom_command = True
+    use_system_font = False
+    font = Monospace 9
+    background_image = None
+    custom_command = htop
+[layouts]
+  [[default]]
+    [[[child0]]]
+      position = 960:29
+      type = Window
+      order = 0
+      parent = ""
+      size = 960, 1171
+    [[[terminal1]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child0
+[plugins]
+  [[CustomCommandsMenu]]
+    [[[alias pat]]]
+      command = '''/bin/grep -q "alias pat" ~/.bash_profile || echo "alias pat='puppet agent -t | tee ~/pat.out'" >> ~/.bash_profile && . ~/.bash_profile'''
+      enabled = True
+      name = alias pat
